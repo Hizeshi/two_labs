@@ -1,6 +1,6 @@
-<!-- index.php -->
 <?php 
-  include 'inc/headers.inc.php'; 
+include 'inc/headers.inc.php';
+include 'inc/cookie.inc.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +26,19 @@
     <!-- Заголовок -->
     <h1><?= $header?></h1>
     <!-- Заголовок -->
+    
+    <!-- Visitor greeting message -->
+    <div class="visitor-info">
+      <?php if ($visitCounter == 1): ?>
+        <p>Спасибо, что зашли на огонек</p>
+      <?php else: ?>
+        <p>Вы зашли к нам <?= $visitCounter ?> раз</p>
+        <?php if (!empty($lastVisit)): ?>
+          <p>Последнее посещение: <?= $lastVisit ?></p>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
+    
     <!-- Область основного контента -->
     <?php 
       include 'inc/routing.inc.php'; 
